@@ -1,0 +1,88 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Player/player_right_2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Player/player_right_1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Player/player_right_3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Player/player_back_1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Player/player_forward_1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Player/player_back_2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Player/player_back_3.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Player/player_forward_2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Player/player_forward_3.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Player/player_left_1.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Player/player_left_2.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Player/player_left_3.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Walk Right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle Right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Idle Backward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Idle Forward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Walk Backward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Walk Forward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "Idle Left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Walk Left",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 20.0
+
+[node name="Player" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+speed = 150
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+animation = "Idle Forward"
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 2 )
+
+
