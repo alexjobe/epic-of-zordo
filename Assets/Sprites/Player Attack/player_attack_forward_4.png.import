@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_left_2.png-8a21dcac5d8780b06af4ac22478a9c29.stex"
+path="res://.import/player_attack_forward_4.png-6c8e8c4491cbdd85675e056d0bceb073.stex"
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/player_left_2.png"
-dest_files=[ "res://.import/player_left_2.png-8a21dcac5d8780b06af4ac22478a9c29.stex" ]
+source_file="res://Assets/Sprites/Player Attack/player_attack_forward_4.png"
+dest_files=[ "res://.import/player_attack_forward_4.png-6c8e8c4491cbdd85675e056d0bceb073.stex" ]
 
 [params]
 

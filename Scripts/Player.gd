@@ -1,7 +1,15 @@
 extends KinematicBody2D
 
+enum Facing {FORWARD, BACKWARD, RIGHT, LEFT}
+
 export (int) var speed = 150
 var velocity = Vector2()
+var facing = Facing.FORWARD
+var is_attacking = false
+
+func _process(delta):
+	get_input()
+	process_movement(delta)
 
 func get_input():
 		
@@ -9,35 +17,66 @@ func get_input():
 	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
+		facing = Facing.RIGHT
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
+		facing = Facing.LEFT
 	elif Input.is_action_pressed("ui_down"):
 		velocity.y += 1
+		facing = Facing.FORWARD
 	elif Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
+		facing = Facing.BACKWARD
 		
-	if velocity.x > 0:
-		$AnimatedSprite.animation = "Walk Right"
-	elif velocity.y > 0:
-		$AnimatedSprite.animation = "Walk Forward"
-	elif velocity.x < 0:
-		$AnimatedSprite.animation = "Walk Left"
-	elif velocity.y < 0:
-		$AnimatedSprite.animation = "Walk Backward"
+	if Input.is_action_just_pressed("ui_attack"):
+		attack()
+				
+func process_movement(delta):
+	
+	if not is_attacking:
+		if velocity.x > 0:
+			$AnimatedSprite.animation = "Walk Right"
+		elif velocity.y > 0:
+			$AnimatedSprite.animation = "Walk Forward"
+		elif velocity.x < 0:
+			$AnimatedSprite.animation = "Walk Left"
+		elif velocity.y < 0:
+			$AnimatedSprite.animation = "Walk Backward"
+			
+		if velocity.length() > 0:
+			velocity = velocity.normalized() * speed
+		else:
+			idle()
+			
+		position += velocity * delta
+			
+func idle():
+	if facing == Facing.RIGHT:
+		$AnimatedSprite.animation = "Idle Right"
+	if facing == Facing.LEFT:
+		$AnimatedSprite.animation = "Idle Left"
+	if facing == Facing.FORWARD:
+		$AnimatedSprite.animation = "Idle Forward"
+	if facing == Facing.BACKWARD:
+		$AnimatedSprite.animation = "Idle Backward"
+			
+func attack():
+	velocity = Vector2(0.0, 0.0)
+	
+	if facing == Facing.RIGHT:
+		print("Attack right")
+		$AnimatedSprite.play("Attack Right")
+	elif facing == Facing.LEFT:
+		print("Attack left")
+		$AnimatedSprite.play("Attack Left")
+	elif facing == Facing.FORWARD:
+		print("Attack front")
+		$AnimatedSprite.play("Attack Forward")
+	elif facing == Facing.BACKWARD:
+		print("Attack back")
+		$AnimatedSprite.play("Attack Backward")
 		
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-	else:
-		if $AnimatedSprite.animation == "Walk Right":
-			$AnimatedSprite.animation = "Idle Right"
-		if $AnimatedSprite.animation == "Walk Left":
-			$AnimatedSprite.animation = "Idle Left"
-		if $AnimatedSprite.animation == "Walk Forward":
-			$AnimatedSprite.animation = "Idle Forward"
-		if $AnimatedSprite.animation == "Walk Backward":
-			$AnimatedSprite.animation = "Idle Backward"
-
-func _process(delta):
-	get_input()
-	position += velocity * delta
+	is_attacking = true
+	yield($AnimatedSprite, "animation_finished")
+	is_attacking = false
 	
