@@ -1,18 +1,19 @@
+# Player.gd
 extends KinematicBody2D
 
 enum Facing {FORWARD, BACKWARD, RIGHT, LEFT}
 
-export (int) var speed = 150
+export (int) var speed = 100
 var velocity = Vector2()
 var facing = Facing.FORWARD
 var is_attacking = false
 
-func _process(delta):
+func _physics_process(delta):
 	get_input()
 	process_movement(delta)
 
 func get_input():
-		
+	
 	velocity = Vector2(0.0, 0.0)
 	
 	if Input.is_action_pressed("ui_right"):
@@ -48,7 +49,8 @@ func process_movement(delta):
 		else:
 			idle()
 			
-		position += velocity * delta
+		var collision = move_and_collide(velocity * delta)
+			
 			
 func idle():
 	if facing == Facing.RIGHT:
@@ -64,16 +66,12 @@ func attack():
 	velocity = Vector2(0.0, 0.0)
 	
 	if facing == Facing.RIGHT:
-		print("Attack right")
 		$AnimatedSprite.play("Attack Right")
 	elif facing == Facing.LEFT:
-		print("Attack left")
 		$AnimatedSprite.play("Attack Left")
 	elif facing == Facing.FORWARD:
-		print("Attack front")
 		$AnimatedSprite.play("Attack Forward")
 	elif facing == Facing.BACKWARD:
-		print("Attack back")
 		$AnimatedSprite.play("Attack Backward")
 		
 	is_attacking = true
