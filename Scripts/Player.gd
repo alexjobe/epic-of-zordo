@@ -4,9 +4,12 @@ extends KinematicBody2D
 enum Facing {FORWARD, BACKWARD, RIGHT, LEFT}
 
 export (int) var speed = 100
+export var facing = Facing.FORWARD
 var velocity = Vector2()
-var facing = Facing.FORWARD
 var is_attacking = false
+
+func _ready():
+	idle()
 
 func _physics_process(delta):
 	get_input()
