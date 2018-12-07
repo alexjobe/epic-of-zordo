@@ -38,14 +38,7 @@ func get_input():
 func process_movement(delta):
 	
 	if not is_attacking:
-		if velocity.x > 0:
-			$AnimatedSprite.animation = "Walk Right"
-		elif velocity.y > 0:
-			$AnimatedSprite.animation = "Walk Forward"
-		elif velocity.x < 0:
-			$AnimatedSprite.animation = "Walk Left"
-		elif velocity.y < 0:
-			$AnimatedSprite.animation = "Walk Backward"
+		walk_animation()
 			
 		if velocity.length() > 0:
 			velocity = velocity.normalized() * speed
@@ -64,6 +57,16 @@ func idle():
 		$AnimatedSprite.animation = "Idle Forward"
 	if facing == Facing.BACKWARD:
 		$AnimatedSprite.animation = "Idle Backward"
+		
+func walk_animation():
+	if velocity.x > 0:
+		$AnimatedSprite.animation = "Walk Right"
+	elif velocity.y > 0:
+		$AnimatedSprite.animation = "Walk Forward"
+	elif velocity.x < 0:
+		$AnimatedSprite.animation = "Walk Left"
+	elif velocity.y < 0:
+		$AnimatedSprite.animation = "Walk Backward"
 			
 func attack():
 	velocity = Vector2(0.0, 0.0)
