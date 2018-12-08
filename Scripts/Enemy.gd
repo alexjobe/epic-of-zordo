@@ -8,6 +8,7 @@ export var facing = Facing.FORWARD
 var velocity = Vector2()
 var is_attacking = false
 var is_pathing = false
+var health = 3
 
 func _physics_process(delta):
 	process_movement(delta)
@@ -69,4 +70,6 @@ func random_movement():
 		velocity.y += randi() % 2
 	elif facing == Facing.BACKWARD:
 		velocity.y -= randi() % 2
-		
+
+func take_damage():
+	health -= 1
