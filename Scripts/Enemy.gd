@@ -1,74 +1,97 @@
 # Enemy.gd
 extends KinematicBody2D
 
-enum Facing {FORWARD, BACKWARD, RIGHT, LEFT}
+var sprite = null
+var path_timer = null
+
+enum STATES {IDLE, WALK, ATTACK}
+enum FACING {FORWARD, BACKWARD, RIGHT, LEFT}
 
 export (int) var speed = 20
-export var facing = Facing.FORWARD
-var velocity = Vector2()
-var is_attacking = false
-var is_pathing = false
-var health = 3
+export (int) var max_health = 3
 
+var current_state = null
+var facing = FORWARD
+var velocity = Vector2()
+var health
+
+func _ready():
+	sprite = $AnimatedSprite
+	path_timer = $PathTimer
+	
+	health = max_health
+	
+	_change_state(IDLE)
+	
 func _physics_process(delta):
+
 	process_movement(delta)
+	
+func _change_state(new_state):
+	current_state = new_state
+
+	match new_state:
+		IDLE:
+			idle_animation()
+			velocity = Vector2(0.0, 0.0)
+		WALK:
+			walk_animation()
 	
 func process_movement(delta):
 	
-	if not is_attacking:
+	if current_state == IDLE:
 		random_path()
-	
-	walk_animation()
 		
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 	else:
-		idle()
+		_change_state(IDLE)
+		return
 		
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		velocity = Vector2(0.0, 0.0)
+		_change_state(IDLE)
 	
-func idle():
-	if facing == Facing.RIGHT:
-		$AnimatedSprite.animation = "Idle Right"
-	if facing == Facing.LEFT:
-		$AnimatedSprite.animation = "Idle Left"
-	if facing == Facing.FORWARD:
-		$AnimatedSprite.animation = "Idle Forward"
-	if facing == Facing.BACKWARD:
-		$AnimatedSprite.animation = "Idle Backward"
-
+func idle_animation():
+	if facing == RIGHT:
+		sprite.animation = "Idle Right"
+	elif facing == LEFT:
+		sprite.animation = "Idle Left"
+	elif facing == FORWARD:
+		sprite.animation = "Idle Forward"
+	elif facing == BACKWARD:
+		sprite.animation = "Idle Backward"
+		
 func walk_animation():
-	if velocity.x > 0:
-		$AnimatedSprite.animation = "Walk Right"
-	elif velocity.y > 0:
-		$AnimatedSprite.animation = "Walk Forward"
-	elif velocity.x < 0:
-		$AnimatedSprite.animation = "Walk Left"
-	elif velocity.y < 0:
-		$AnimatedSprite.animation = "Walk Backward"
+	if facing == RIGHT:
+		sprite.animation = "Walk Right"
+	elif facing == LEFT:
+		sprite.animation = "Walk Left"
+	elif facing == FORWARD:
+		sprite.animation = "Walk Forward"
+	elif facing == BACKWARD:
+		sprite.animation = "Walk Backward"
 		
 func random_path():
-	if not is_pathing:
-		is_pathing = true
+	if path_timer.is_stopped():
 		facing = randi() % 4
+		_change_state(WALK)
 		velocity = Vector2(0.0, 0.0)
 		
 		random_movement()
 		
-		$"Path Timer".start()
-		yield($"Path Timer", "timeout")
-		is_pathing = false
+		path_timer.start()
+		yield(path_timer, "timeout")
+		_change_state(IDLE)
 		
 func random_movement():
-	if facing == Facing.RIGHT:
+	if facing == RIGHT:
 		velocity.x += randi() % 2
-	elif facing == Facing.LEFT:
+	elif facing == LEFT:
 		velocity.x -= randi() % 2
-	elif facing == Facing.FORWARD:
+	elif facing == FORWARD:
 		velocity.y += randi() % 2
-	elif facing == Facing.BACKWARD:
+	elif facing == BACKWARD:
 		velocity.y -= randi() % 2
 
 func take_damage():

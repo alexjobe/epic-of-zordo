@@ -57,13 +57,11 @@ _sections_unfolded = [ "Cell" ]
 [node name="Enemy" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 384, 80 )
-facing = 2
 
 [node name="Player" parent="." index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 184.155, 318.834 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "collision" ]
-max_health = 5
 
 [node name="Objects" type="TileMap" parent="." index="4"]
 
