@@ -8,9 +8,11 @@ var already_hit = []
 func _ready():
 	_change_state(IDLE)
 	
+# Called from Player.gd when attack begins
 func attack():
 	_change_state(ATTACK)
 
+# Called from AnimatedSprite when attack animation is finished
 func end_attack():
 	_change_state(IDLE)
 

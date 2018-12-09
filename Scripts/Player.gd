@@ -1,8 +1,10 @@
 # Player.gd
 extends KinematicBody2D
 
-signal begin_attack
-signal end_attack
+signal attack_front
+signal attack_back
+signal attack_right
+signal attack_left
 
 var sprite = null
 
@@ -18,8 +20,6 @@ var velocity = Vector2()
 var health
 
 func _ready():
-	connect("begin_attack", $AttackZone, "attack")
-	connect("end_attack", $AttackZone, "end_attack")
 	
 	sprite = $AnimatedSprite
 	
@@ -84,12 +84,19 @@ func process_movement(delta):
 func attack():
 	_change_state(ATTACK)
 	
-	emit_signal("begin_attack")
-		
+	match facing:
+		FORWARD:
+			emit_signal("attack_front")
+		BACKWARD:
+			emit_signal("attack_back")
+		RIGHT:
+			emit_signal("attack_right")
+		LEFT:
+			emit_signal("attack_left")
+	
+	# Wait for attack animation to finish, then switch to idle
 	yield(sprite, "animation_finished")
 	_change_state(IDLE)
-	
-	emit_signal("end_attack")
 	
 func idle_animation():
 	if facing == RIGHT:
@@ -102,13 +109,13 @@ func idle_animation():
 		sprite.animation = "Idle Backward"
 		
 func walk_animation():
-	if velocity.x > 0:
+	if facing == RIGHT:
 		sprite.animation = "Walk Right"
-	elif velocity.y > 0:
-		sprite.animation = "Walk Forward"
-	elif velocity.x < 0:
+	if facing == LEFT:
 		sprite.animation = "Walk Left"
-	elif velocity.y < 0:
+	if facing == FORWARD:
+		sprite.animation = "Walk Forward"
+	if facing == BACKWARD:
 		sprite.animation = "Walk Backward"
 		
 func attack_animation():
