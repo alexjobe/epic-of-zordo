@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 radius = 16.0
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32.5936, 16.5082 )
@@ -113,7 +113,6 @@ _sections_unfolded = [ "Offset", "Region", "Transform" ]
 
 [node name="Tree" type="Sprite" parent="." index="2"]
 
-editor/display_folded = true
 position = Vector2( 144, 0 )
 texture = ExtResource( 1 )
 centered = false
@@ -167,6 +166,6 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Roof/StaticBody2D" index="0"]
 
 position = Vector2( 40.4529, 41.4529 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 
