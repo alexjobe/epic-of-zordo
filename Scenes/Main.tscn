@@ -11,7 +11,7 @@ vertices = PoolVector2Array( -240, 1000, 232, 312, 312, 296, 360, 296, 1260, 100
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 3, 5, 6, 4 ), PoolIntArray( 7, 8, 6, 5, 9 ), PoolIntArray( 10, 1, 0 ), PoolIntArray( 10, 0, 11, 12 ), PoolIntArray( 11, 6, 8, 13 ), PoolIntArray( 14, 12, 11, 13, 15 ), PoolIntArray( 9, 2, 1, 14, 15, 7 ) ]
 outlines = [ PoolVector2Array( -240, -240, -240, 1000, 1260, 1000, 1260, -240 ), PoolVector2Array( 312, 248, 312, 296, 360, 296, 360, 248 ), PoolVector2Array( 248, 168, 248, 216, 296, 216, 296, 168 ), PoolVector2Array( 136, 256, 136, 312, 232, 312, 232, 256 ) ]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 _sections_unfolded = [ "Pause" ]
 

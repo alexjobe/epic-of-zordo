@@ -3,10 +3,11 @@ extends KinematicBody2D
 
 var sprite = null
 var path_timer = null
+var stun_timer = null
 var player = null
 var nav = null
 
-enum STATES {IDLE, WALK, ATTACK}
+enum STATES {IDLE, WALK, ATTACK, STUN}
 enum FACING {FORWARD, BACKWARD, RIGHT, LEFT}
 
 export (int) var speed = 20
@@ -16,12 +17,13 @@ export (int) var attack_range = 150
 var current_state = null
 var facing = FORWARD
 var velocity = Vector2()
-var health
+var health = null
 var path = []
 
 func _ready():
 	sprite = $AnimatedSprite
 	path_timer = $PathTimer
+	stun_timer = $StunTimer
 	player = get_node("../Player")
 	nav = get_node("../Navigation2D")
 	
@@ -39,17 +41,23 @@ func _change_state(new_state):
 	match new_state:
 		IDLE:
 			idle_animation()
-			velocity = Vector2(0.0, 0.0)
+			reset_velocity()
 		WALK:
 			walk_animation()
+		STUN:
+			idle_animation()
+			stun_timer.start()
+			yield(stun_timer, "timeout")
+			_change_state(IDLE)
 	
 func process_movement(delta):
 	
-	if position.distance_to(player.position) <= attack_range:
-		_change_state(ATTACK)
+	if not current_state == STUN:
+		if position.distance_to(player.position) <= attack_range:
+			_change_state(ATTACK)
 	
 	if current_state == IDLE:
-		random_path()
+		random_movement()
 	
 	if current_state == ATTACK:
 		if position.distance_to(player.position) > attack_range:
@@ -59,13 +67,10 @@ func process_movement(delta):
 		
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-	else:
-		_change_state(IDLE)
-		return
-		
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		_change_state(IDLE)
+		var collision = move_and_collide(velocity * delta)
+		if collision:
+			if not collision.collider == player:
+				_change_state(IDLE)
 	
 func idle_animation():
 	if facing == RIGHT:
@@ -87,19 +92,19 @@ func walk_animation():
 	elif facing == BACKWARD:
 		sprite.animation = "Walk Backward"
 		
-func random_path():
+func random_movement():
 	if path_timer.is_stopped():
 		facing = randi() % 4
 		_change_state(WALK)
-		velocity = Vector2(0.0, 0.0)
+		reset_velocity()
 		
-		random_movement()
+		random_velocity()
 		
 		path_timer.start()
 		yield(path_timer, "timeout")
 		_change_state(IDLE)
 		
-func random_movement():
+func random_velocity():
 	if facing == RIGHT:
 		velocity.x += randi() % 2
 	elif facing == LEFT:
@@ -108,6 +113,9 @@ func random_movement():
 		velocity.y += randi() % 2
 	elif facing == BACKWARD:
 		velocity.y -= randi() % 2
+		
+	if velocity.length() <= 0:
+		_change_state(IDLE)
 		
 func set_facing():
 	if abs(velocity.y) >= abs(velocity.x):
@@ -125,7 +133,7 @@ func set_facing():
 		
 func move_towards_player():
 	
-	velocity = Vector2(0.0, 0.0)
+	reset_velocity()
 	path = nav.get_simple_path(position, player.position)
 	velocity += (path[1] - position)
 	set_facing()
@@ -133,3 +141,10 @@ func move_towards_player():
 
 func take_damage():
 	health -= 1
+	reset_velocity()
+	velocity += (position - player.position)
+	_change_state(STUN)
+	
+func reset_velocity():
+	velocity = Vector2(0.0, 0.0)
+

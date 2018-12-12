@@ -39,16 +39,16 @@ func _change_state(new_state):
 	match new_state:
 		IDLE:
 			idle_animation()
-			velocity = Vector2(0.0, 0.0)
+			reset_velocity()
 		ATTACK:
 			attack_animation()
-			velocity = Vector2(0.0, 0.0)
+			reset_velocity()
 		WALK:
 			walk_animation()
 
 func get_input():
 	
-	velocity = Vector2(0.0, 0.0)
+	reset_velocity()
 	
 	if Input.is_action_just_pressed("ui_attack"):
 		attack()
@@ -127,4 +127,7 @@ func attack_animation():
 		sprite.play("Attack Forward")
 	elif facing == BACKWARD:
 		sprite.play("Attack Backward")
+		
+func reset_velocity():
+	velocity = Vector2(0.0, 0.0)
 	

@@ -2,15 +2,15 @@
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Enemy/log-12.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/Enemy/log-6.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Enemy/log-0.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Enemy/log-1.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Enemy/log-2.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/Enemy/log-3.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Sprites/Enemy/log-13.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/Enemy/log-14.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/Enemy/log-15.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Sprites/Enemy/log-18.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Enemy/log-13.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Enemy/log-14.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Enemy/log-15.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Enemy/log-18.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Enemy/log-0.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Enemy/log-1.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Enemy/log-2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Enemy/log-3.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Enemy/log-6.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Sprites/Enemy/log-7.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Sprites/Enemy/log-8.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Sprites/Enemy/log-9.png" type="Texture" id=14]
@@ -26,37 +26,37 @@ animations = [ {
 "name": "Idle Right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "Idle Backward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "Idle Forward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "Walk Forward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Walk Right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "Idle Left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Walk Forward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "Idle Backward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle Forward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "Walk Backward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "Walk Left",
 "speed": 5.0
@@ -78,6 +78,7 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 speed = 20
 max_health = 3
+attack_range = 150
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -94,6 +95,13 @@ _sections_unfolded = [ "Transform" ]
 
 process_mode = 1
 wait_time = 2.0
+one_shot = true
+autostart = false
+
+[node name="StunTimer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.0
 one_shot = true
 autostart = false
 
