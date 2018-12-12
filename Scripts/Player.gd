@@ -13,6 +13,7 @@ enum FACING {FORWARD, BACKWARD, RIGHT, LEFT}
 
 export (int) var speed = 100
 export (int) var max_health = 5
+export (Color) var damage_tint = Color(1, 0, 0)
 
 var current_state = null
 var facing = FORWARD
@@ -97,6 +98,12 @@ func attack():
 	# Wait for attack animation to finish, then switch to idle
 	yield(sprite, "animation_finished")
 	_change_state(IDLE)
+	
+func take_damage():
+	health -= 1
+	sprite.modulate = damage_tint
+	yield(get_tree().create_timer(0.3), "timeout")
+	sprite.modulate = Color(1, 1, 1)
 	
 func set_animation(type):
 	

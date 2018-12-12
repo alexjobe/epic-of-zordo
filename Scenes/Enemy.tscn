@@ -79,7 +79,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="Enemy" type="KinematicBody2D" index="0" groups=[
+[node name="Enemy" type="KinematicBody2D" groups=[
 "Enemies",
 ]]
 
@@ -88,7 +88,8 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-speed = 20
+normal_speed = 20
+attack_speed = 40
 max_health = 3
 attack_range = 150
 
@@ -111,6 +112,13 @@ one_shot = true
 autostart = false
 
 [node name="StunTimer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="AttackTimer" type="Timer" parent="." index="4"]
 
 process_mode = 1
 wait_time = 1.0

@@ -11,7 +11,7 @@ vertices = PoolVector2Array( -240, 1000, 232, 312, 312, 296, 360, 296, 1260, 100
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 3, 5, 6, 4 ), PoolIntArray( 7, 8, 6, 5, 9 ), PoolIntArray( 10, 1, 0 ), PoolIntArray( 10, 0, 11, 12 ), PoolIntArray( 11, 6, 8, 13 ), PoolIntArray( 14, 12, 11, 13, 15 ), PoolIntArray( 9, 2, 1, 14, 15, 7 ) ]
 outlines = [ PoolVector2Array( -240, -240, -240, 1000, 1260, 1000, 1260, -240 ), PoolVector2Array( 312, 248, 312, 296, 360, 296, 360, 248 ), PoolVector2Array( 248, 168, 248, 216, 296, 216, 296, 168 ), PoolVector2Array( 136, 256, 136, 312, 232, 312, 232, 256 ) ]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 _sections_unfolded = [ "Pause" ]
 
@@ -64,12 +64,16 @@ _sections_unfolded = [ "Cell" ]
 
 position = Vector2( 384, 80 )
 
-[node name="Player" parent="." index="3" instance=ExtResource( 3 )]
+[node name="Enemy2" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 720, 272 )
+
+[node name="Player" parent="." index="4" instance=ExtResource( 3 )]
 
 position = Vector2( 184.155, 318.834 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "collision" ]
 
-[node name="Objects" type="TileMap" parent="." index="4"]
+[node name="Objects" type="TileMap" parent="." index="5"]
 
 mode = 0
 tile_set = ExtResource( 1 )
@@ -93,14 +97,18 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SceneChange" parent="." index="5" instance=ExtResource( 4 )]
+[node name="SceneChange" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 184.116, 297.46 )
 next_scene = "res://Scenes/Inside.tscn"
 
-[node name="Navigation2D" type="Navigation2D" parent="." index="6"]
+[node name="Navigation2D" type="Navigation2D" parent="." index="7"]
 
-editor/display_folded = true
+visible = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D" index="0"]
 

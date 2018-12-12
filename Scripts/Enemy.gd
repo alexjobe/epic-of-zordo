@@ -4,18 +4,21 @@ extends KinematicBody2D
 var sprite = null
 var path_timer = null
 var stun_timer = null
+var attack_timer = null
 var player = null
 var nav = null
 
 enum STATES {IDLE, WALK, ATTACK, STUN, DEATH}
 enum FACING {FORWARD, BACKWARD, RIGHT, LEFT}
 
-export (int) var speed = 20
+export (int) var normal_speed = 20
+export (int) var attack_speed = 40
 export (int) var max_health = 3
 export (int) var attack_range = 150
 
 var current_state = null
 var facing = FORWARD
+var speed = 0
 var velocity = Vector2()
 var health = null
 var path = []
@@ -24,6 +27,7 @@ func _ready():
 	sprite = $AnimatedSprite
 	path_timer = $PathTimer
 	stun_timer = $StunTimer
+	attack_timer = $AttackTimer
 	player = get_node("../Player")
 	nav = get_node("../Navigation2D")
 	
@@ -43,8 +47,12 @@ func _change_state(new_state):
 		IDLE:
 			set_animation("Idle")
 			reset_velocity()
+			speed = normal_speed
 		WALK:
 			set_animation("Walk")
+			speed = normal_speed
+		ATTACK:
+			speed = attack_speed
 		STUN:
 			set_animation("Idle")
 			stun_timer.start()
@@ -77,7 +85,9 @@ func move(delta):
 		velocity = velocity.normalized() * speed
 		var collision = move_and_collide(velocity * delta)
 		if collision:
-			if not collision.collider == player:
+			if collision.collider == player:
+				attack()
+			else:
 				_change_state(IDLE)
 	
 func set_animation(type):
@@ -137,6 +147,11 @@ func path_to_player():
 	velocity += (path[1] - position)
 	set_facing()
 	set_animation("Walk")
+	
+func attack():
+	if attack_timer.is_stopped():
+		player.take_damage()
+		attack_timer.start()
 
 func take_damage():
 	health -= 1
