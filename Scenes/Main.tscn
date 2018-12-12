@@ -63,7 +63,6 @@ _sections_unfolded = [ "Cell" ]
 [node name="Enemy" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 384, 80 )
-attack_range = 150
 
 [node name="Player" parent="." index="3" instance=ExtResource( 3 )]
 

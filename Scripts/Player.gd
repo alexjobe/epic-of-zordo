@@ -38,13 +38,13 @@ func _change_state(new_state):
 
 	match new_state:
 		IDLE:
-			idle_animation()
+			set_animation("Idle")
 			reset_velocity()
 		ATTACK:
-			attack_animation()
+			set_animation("Attack")
 			reset_velocity()
 		WALK:
-			walk_animation()
+			set_animation("Walk")
 
 func get_input():
 	
@@ -98,35 +98,17 @@ func attack():
 	yield(sprite, "animation_finished")
 	_change_state(IDLE)
 	
-func idle_animation():
-	if facing == RIGHT:
-		sprite.animation = "Idle Right"
-	if facing == LEFT:
-		sprite.animation = "Idle Left"
-	if facing == FORWARD:
-		sprite.animation = "Idle Forward"
-	if facing == BACKWARD:
-		sprite.animation = "Idle Backward"
-		
-func walk_animation():
-	if facing == RIGHT:
-		sprite.animation = "Walk Right"
-	if facing == LEFT:
-		sprite.animation = "Walk Left"
-	if facing == FORWARD:
-		sprite.animation = "Walk Forward"
-	if facing == BACKWARD:
-		sprite.animation = "Walk Backward"
-		
-func attack_animation():
-	if facing == RIGHT:
-		sprite.play("Attack Right")
-	elif facing == LEFT:
-		sprite.play("Attack Left")
-	elif facing == FORWARD:
-		sprite.play("Attack Forward")
-	elif facing == BACKWARD:
-		sprite.play("Attack Backward")
+func set_animation(type):
+	
+	match facing:
+		RIGHT:
+			sprite.animation = type + " Right"
+		LEFT:
+			sprite.animation = type + " Left"
+		FORWARD:
+			sprite.animation = type + " Forward"
+		BACKWARD:
+			sprite.animation = type + " Backward"
 		
 func reset_velocity():
 	velocity = Vector2(0.0, 0.0)

@@ -7,7 +7,7 @@ var stun_timer = null
 var player = null
 var nav = null
 
-enum STATES {IDLE, WALK, ATTACK, STUN}
+enum STATES {IDLE, WALK, ATTACK, STUN, DEATH}
 enum FACING {FORWARD, BACKWARD, RIGHT, LEFT}
 
 export (int) var speed = 20
@@ -33,22 +33,27 @@ func _ready():
 	
 func _physics_process(delta):
 
-	process_movement(delta)
+	if not current_state == DEATH:
+		process_movement(delta)
 	
 func _change_state(new_state):
 	current_state = new_state
 
 	match new_state:
 		IDLE:
-			idle_animation()
+			set_animation("Idle")
 			reset_velocity()
 		WALK:
-			walk_animation()
+			set_animation("Walk")
 		STUN:
-			idle_animation()
+			set_animation("Idle")
 			stun_timer.start()
 			yield(stun_timer, "timeout")
 			_change_state(IDLE)
+		DEATH:
+			sprite.play("Death")
+			yield(sprite, "animation_finished")
+			queue_free()
 	
 func process_movement(delta):
 	
@@ -57,14 +62,17 @@ func process_movement(delta):
 			_change_state(ATTACK)
 	
 	if current_state == IDLE:
-		random_movement()
+		random_path()
 	
 	if current_state == ATTACK:
 		if position.distance_to(player.position) > attack_range:
 			_change_state(IDLE)
 		else:
-			move_towards_player()
+			path_to_player()
 		
+	move(delta)
+				
+func move(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		var collision = move_and_collide(velocity * delta)
@@ -72,27 +80,19 @@ func process_movement(delta):
 			if not collision.collider == player:
 				_change_state(IDLE)
 	
-func idle_animation():
-	if facing == RIGHT:
-		sprite.animation = "Idle Right"
-	elif facing == LEFT:
-		sprite.animation = "Idle Left"
-	elif facing == FORWARD:
-		sprite.animation = "Idle Forward"
-	elif facing == BACKWARD:
-		sprite.animation = "Idle Backward"
+func set_animation(type):
+	
+	match facing:
+		RIGHT:
+			sprite.animation = type + " Right"
+		LEFT:
+			sprite.animation = type + " Left"
+		FORWARD:
+			sprite.animation = type + " Forward"
+		BACKWARD:
+			sprite.animation = type + " Backward"
 		
-func walk_animation():
-	if facing == RIGHT:
-		sprite.animation = "Walk Right"
-	elif facing == LEFT:
-		sprite.animation = "Walk Left"
-	elif facing == FORWARD:
-		sprite.animation = "Walk Forward"
-	elif facing == BACKWARD:
-		sprite.animation = "Walk Backward"
-		
-func random_movement():
+func random_path():
 	if path_timer.is_stopped():
 		facing = randi() % 4
 		_change_state(WALK)
@@ -123,27 +123,30 @@ func set_facing():
 			facing = FORWARD
 		elif velocity.y < 0:
 			facing = BACKWARD
+	elif velocity.x > 0:
+		facing = RIGHT
+	elif velocity.x < 0:
+		facing = LEFT
 	else:
-		if velocity.x > 0:
-			facing = RIGHT
-		elif velocity.x < 0:
-			facing = LEFT
-		else:
-			facing = FORWARD
+		facing = FORWARD
 		
-func move_towards_player():
+func path_to_player():
 	
 	reset_velocity()
 	path = nav.get_simple_path(position, player.position)
 	velocity += (path[1] - position)
 	set_facing()
-	walk_animation()
+	set_animation("Walk")
 
 func take_damage():
 	health -= 1
 	reset_velocity()
 	velocity += (position - player.position)
-	_change_state(STUN)
+	
+	if health <= 0:
+		_change_state(DEATH)
+	else:
+		_change_state(STUN)
 	
 func reset_velocity():
 	velocity = Vector2(0.0, 0.0)
