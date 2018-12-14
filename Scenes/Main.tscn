@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/Tilesets/Overworld_Tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/SceneChange.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/Interface.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Tilesets/Overworld_Tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/SceneChange.tscn" type="PackedScene" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -11,14 +12,24 @@ vertices = PoolVector2Array( -240, 1000, 232, 312, 312, 296, 360, 296, 1260, 100
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 3, 5, 6, 4 ), PoolIntArray( 7, 8, 6, 5, 9 ), PoolIntArray( 10, 1, 0 ), PoolIntArray( 10, 0, 11, 12 ), PoolIntArray( 11, 6, 8, 13 ), PoolIntArray( 14, 12, 11, 13, 15 ), PoolIntArray( 9, 2, 1, 14, 15, 7 ) ]
 outlines = [ PoolVector2Array( -240, -240, -240, 1000, 1260, 1000, 1260, -240 ), PoolVector2Array( 312, 248, 312, 296, 360, 296, 360, 248 ), PoolVector2Array( 248, 168, 248, 216, 296, 216, 296, 168 ), PoolVector2Array( 136, 256, 136, 312, 232, 312, 232, 256 ) ]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 _sections_unfolded = [ "Pause" ]
 
-[node name="Ground" type="TileMap" parent="." index="0"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Interface" parent="CanvasLayer" index="0" instance=ExtResource( 1 )]
+
+[node name="Ground" type="TileMap" parent="." index="1"]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -39,10 +50,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Objects Behind" type="TileMap" parent="." index="1"]
+[node name="Objects Behind" type="TileMap" parent="." index="2"]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -60,23 +71,23 @@ format = 1
 tile_data = PoolIntArray( 1179657, 11, 0 )
 _sections_unfolded = [ "Cell" ]
 
-[node name="Enemy" parent="." index="2" instance=ExtResource( 2 )]
+[node name="Enemy" parent="." index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 384, 80 )
 
-[node name="Enemy2" parent="." index="3" instance=ExtResource( 2 )]
+[node name="Enemy2" parent="." index="4" instance=ExtResource( 3 )]
 
 position = Vector2( 720, 272 )
 
-[node name="Player" parent="." index="4" instance=ExtResource( 3 )]
+[node name="Player" parent="." index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 184.155, 318.834 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "collision" ]
 
-[node name="Objects" type="TileMap" parent="." index="5"]
+[node name="Objects" type="TileMap" parent="." index="6"]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -97,12 +108,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SceneChange" parent="." index="6" instance=ExtResource( 4 )]
+[node name="SceneChange" parent="." index="7" instance=ExtResource( 5 )]
 
 position = Vector2( 184.116, 297.46 )
 next_scene = "res://Scenes/Inside.tscn"
 
-[node name="Navigation2D" type="Navigation2D" parent="." index="7"]
+[node name="Navigation2D" type="Navigation2D" parent="." index="8"]
 
 visible = false
 __meta__ = {
