@@ -7,12 +7,13 @@ signal attack_right
 signal attack_left
 
 var sprite = null
+var hearts = null
 
 enum STATES {IDLE, WALK, ATTACK}
 enum FACING {FORWARD, BACKWARD, RIGHT, LEFT}
 
 export (int) var speed = 100
-export (int) var max_health = 5
+export (int) var max_health = 4
 export (Color) var damage_tint = Color(1, 0, 0)
 
 var current_state = null
@@ -23,8 +24,11 @@ var health
 func _ready():
 	
 	sprite = $AnimatedSprite
+	hearts = get_node("../CanvasLayer/Interface/MarginContainer/HeartDisplay")
 	
 	health = max_health
+	hearts.set_max_health(max_health)
+	hearts.update_health(health)
 	
 	_change_state(IDLE)
 
@@ -104,6 +108,7 @@ func take_damage():
 	sprite.modulate = damage_tint
 	yield(get_tree().create_timer(0.3), "timeout")
 	sprite.modulate = Color(1, 1, 1)
+	hearts.update_health(health)
 	
 func set_animation(type):
 	
