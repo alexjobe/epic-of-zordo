@@ -1,87 +1,87 @@
 [gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/Player Move/player_right_1.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/Player Move/player_back_1.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Player Move/player_forward_2.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Player Move/player_forward_1.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Player Move/player_forward_3.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/Player Move/player_left_2.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Sprites/Player Move/player_left_1.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/Player Move/player_left_3.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_forward_1.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_forward_2.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_forward_3.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_forward_4.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Sprites/Player Move/player_right_2.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Sprites/Player Move/player_right_3.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Sprites/Player Move/player_back_2.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Sprites/Player Move/player_back_3.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_back_1.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_back_2.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_back_3.png" type="Texture" id=20]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_back_4.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_forward_1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_forward_2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_forward_3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_forward_4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Player Move/player_forward_2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Player Move/player_forward_1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Player Move/player_forward_3.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Player Move/player_back_2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Player Move/player_back_1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Player Move/player_back_3.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Player Move/player_left_2.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Player Move/player_left_1.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Player Move/player_left_3.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Player Move/player_right_2.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Player Move/player_right_1.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/Player Move/player_right_3.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_right_1.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_right_2.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_right_3.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_right_4.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Sprites/Player Attack/player_attack_left_1.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Sprites/Player Attack/player_attack_left_2.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Sprites/Player Attack/player_attack_left_3.png" type="Texture" id=24]
 [ext_resource path="res://Assets/Sprites/Player Attack/player_attack_left_4.png" type="Texture" id=25]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_right_1.png" type="Texture" id=26]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_right_2.png" type="Texture" id=27]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_right_3.png" type="Texture" id=28]
-[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_right_4.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_back_1.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_back_2.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_back_3.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/Player Attack/player_attack_back_4.png" type="Texture" id=29]
 [ext_resource path="res://Scripts/AttackZone.gd" type="Script" id=30]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "Idle Right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "Idle Backward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "Walk Forward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Walk Left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": false,
 "name": "Attack Forward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "Idle Forward",
+"name": "Walk Forward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "Walk Right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 3 ), ExtResource( 17 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Walk Backward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Walk Left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "Idle Left",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "Idle Backward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle Forward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "Walk Right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "Idle Right",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": false,
-"name": "Attack Backward",
+"name": "Attack Right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
@@ -91,7 +91,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
 "loop": false,
-"name": "Attack Right",
+"name": "Attack Backward",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
@@ -106,7 +106,7 @@ extents = Vector2( 8, 11.5 )
 custom_solver_bias = 0.0
 radius = 5.52301
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -234,6 +234,13 @@ position = Vector2( 0, -10 )
 shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="DamageTimer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 0.3
+one_shot = true
+autostart = false
+
 [connection signal="attack_back" from="." to="AttackZoneBack" method="attack"]
 
 [connection signal="attack_front" from="." to="AttackZoneFront" method="attack"]
@@ -242,12 +249,12 @@ _sections_unfolded = [ "Transform" ]
 
 [connection signal="attack_right" from="." to="AttackZoneRight" method="attack"]
 
-[connection signal="animation_finished" from="AnimatedSprite" to="AttackZoneRight" method="end_attack"]
-
-[connection signal="animation_finished" from="AnimatedSprite" to="AttackZoneLeft" method="end_attack"]
-
 [connection signal="animation_finished" from="AnimatedSprite" to="AttackZoneFront" method="end_attack"]
 
+[connection signal="animation_finished" from="AnimatedSprite" to="AttackZoneRight" method="end_attack"]
+
 [connection signal="animation_finished" from="AnimatedSprite" to="AttackZoneBack" method="end_attack"]
+
+[connection signal="animation_finished" from="AnimatedSprite" to="AttackZoneLeft" method="end_attack"]
 
 

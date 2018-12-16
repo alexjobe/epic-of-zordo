@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scripts/HeartDisplay.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/UI/Heart.tscn" type="PackedScene" id=2]
 
 [node name="Interface" type="Control"]
 
@@ -52,22 +51,5 @@ size_flags_vertical = 1
 alignment = 0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Grow Direction" ]
-
-[node name="Heart" parent="MarginContainer/HeartDisplay" index="0" instance=ExtResource( 2 )]
-
-margin_right = 32.0
-margin_bottom = 560.0
-
-[node name="Heart2" parent="MarginContainer/HeartDisplay" index="1" instance=ExtResource( 2 )]
-
-margin_left = 36.0
-margin_right = 68.0
-margin_bottom = 560.0
-
-[node name="Heart3" parent="MarginContainer/HeartDisplay" index="2" instance=ExtResource( 2 )]
-
-margin_left = 72.0
-margin_right = 104.0
-margin_bottom = 560.0
 
 

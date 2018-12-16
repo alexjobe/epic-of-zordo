@@ -116,6 +116,7 @@ next_scene = "res://Scenes/Inside.tscn"
 
 [node name="Navigation2D" type="Navigation2D" parent="." index="8"]
 
+editor/display_folded = true
 visible = false
 __meta__ = {
 "_edit_group_": true,
