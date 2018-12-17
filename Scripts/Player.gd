@@ -7,29 +7,27 @@ signal attack_right
 signal attack_left
 
 var sprite = null
-var hearts = null
+onready var hearts = get_node("../CanvasLayer/Interface/MarginContainer/HeartDisplay")
 var damage_timer = null
 
 enum STATES {IDLE, WALK, ATTACK}
 enum FACING {FORWARD, BACKWARD, RIGHT, LEFT}
 
 export (int) var speed = 100
-export (int) var max_health = 4
 export (Color) var damage_tint = Color(1, 0, 0)
 
 var current_state = null
 var facing = FORWARD
 var velocity = Vector2()
-var health
 
 func _ready():
 	
 	sprite = $AnimatedSprite
 	damage_timer = $DamageTimer
-	hearts = get_node("../CanvasLayer/Interface/MarginContainer/HeartDisplay")
 	
-	health = max_health
-	hearts.set_max_health(max_health)
+	hearts.set_max_health(Global.player_max_health)
+	hearts.update_health(Global.player_health)
+	
 	
 	_change_state(IDLE)
 
@@ -107,12 +105,12 @@ func attack():
 func take_damage():
 	# Damage timer prevents the player from taking damage too fast
 	if damage_timer.is_stopped():
-		health -= 1
+		Global.player_health -= 1
 		sprite.modulate = damage_tint
 		damage_timer.start()
 		yield(damage_timer, "timeout")
 		sprite.modulate = Color(1, 1, 1)
-		hearts.update_health(health)
+		hearts.update_health(Global.player_health)
 	
 func set_animation(type):
 	
