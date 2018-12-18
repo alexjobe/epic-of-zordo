@@ -20,7 +20,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="NPC" type="KinematicBody2D" index="0"]
+[node name="NPC" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
