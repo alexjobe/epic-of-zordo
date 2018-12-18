@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile134.png-b78824f93371bf11ef0ddc47e5039fda.stex"
+path="res://.import/tile134.png-18b34c90d8e5145642f4631c7397a754.stex"
 
 [deps]
 
-source_file="res://Assets/Sprites/Coin/tile134.png"
-dest_files=[ "res://.import/tile134.png-b78824f93371bf11ef0ddc47e5039fda.stex" ]
+source_file="res://Assets/Sprites/Objects/tile134.png"
+dest_files=[ "res://.import/tile134.png-18b34c90d8e5145642f4631c7397a754.stex" ]
 
 [params]
 

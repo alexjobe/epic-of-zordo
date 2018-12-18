@@ -4,6 +4,7 @@ extends Node
 var player_max_health = 16;
 var player_health = 16;
 var quest_stage = 0
+var coin_found = false
 
 func _ready():
 	player_health = player_max_health

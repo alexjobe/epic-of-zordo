@@ -1,10 +1,12 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Coin.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/Coin/tile132.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/Coin/tile133.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Coin/tile134.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Coin/tile135.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Objects/tile132.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Objects/tile133.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Objects/tile134.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Objects/tile135.png" type="Texture" id=5]
+
+
 
 [sub_resource type="SpriteFrames" id=1]
 
