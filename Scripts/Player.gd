@@ -13,11 +13,11 @@ var damage_timer = null
 enum STATES {IDLE, WALK, ATTACK}
 enum FACING {FORWARD, BACKWARD, RIGHT, LEFT}
 
+export (FACING) var facing = FORWARD
 export (int) var speed = 100
 export (Color) var damage_tint = Color(1, 0, 0)
 
 var current_state = null
-var facing = FORWARD
 var velocity = Vector2()
 
 func _ready():
