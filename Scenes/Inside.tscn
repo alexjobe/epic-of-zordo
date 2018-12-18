@@ -102,4 +102,6 @@ next_scene = "res://Scenes/Main.tscn"
 
 position = Vector2( 280, 432 )
 
+[connection signal="interact" from="Player" to="NPC" method="_on_Player_interact"]
+
 

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/NPC.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/NPC/tile000.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/UI/text_box.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Fonts/romulus.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scripts/SpeechBox.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Fonts/romulus.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scenes/Quest.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -15,7 +17,7 @@ extents = Vector2( 8, 10.7002 )
 size = 16
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="NPC" type="KinematicBody2D" index="0"]
@@ -25,6 +27,7 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+min_interact_distance = 30
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -45,9 +48,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -64.0
-margin_top = -53.0
-margin_right = 63.0
-margin_bottom = -12.0
+margin_top = -64.0
+margin_right = 80.0
+margin_bottom = -10.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -56,7 +59,8 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 3 )
 expand = true
-stretch_mode = 5
+stretch_mode = 0
+script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="SpeechBox" index="0"]
 
@@ -64,10 +68,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 25.0
-margin_top = 12.0
-margin_right = 141.0
-margin_bottom = 42.0
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 140.0
+margin_bottom = 46.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -77,9 +81,20 @@ size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Hello there!"
+align = 1
+valign = 1
+autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Quest" parent="." index="3" instance=ExtResource( 6 )]
+
+start_text = "Can you help me?"
+progress_text = "Please find my macguffin!"
+completed_text = "Thank you!"
+
+[connection signal="stage_changed" from="Quest" to="SpeechBox" method="_on_Quest_stage_changed"]
 
 

@@ -5,6 +5,8 @@
 [node name="Quest" type="Node"]
 
 script = ExtResource( 1 )
-progress = null
+start_text = ""
+progress_text = ""
+completed_text = ""
 
 

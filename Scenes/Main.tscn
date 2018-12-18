@@ -84,7 +84,6 @@ position = Vector2( 720, 272 )
 
 position = Vector2( 184.155, 318.834 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "collision" ]
-facing = null
 
 [node name="Objects" type="TileMap" parent="." index="6"]
 

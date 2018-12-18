@@ -5,6 +5,7 @@ signal attack_front
 signal attack_back
 signal attack_right
 signal attack_left
+signal interact
 
 var sprite = null
 onready var hearts = get_node("../CanvasLayer/Interface/MarginContainer/HeartDisplay")
@@ -57,6 +58,9 @@ func get_input():
 	if Input.is_action_just_pressed("ui_attack"):
 		attack()
 		return
+	
+	if Input.is_action_just_pressed("ui_select"):
+		emit_signal("interact")
 	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
