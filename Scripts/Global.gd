@@ -3,6 +3,8 @@ extends Node
 
 var player_max_health = 16;
 var player_health = 16;
+var player_location = null;
+
 var quest_stage = 0
 var coin_found = false
 

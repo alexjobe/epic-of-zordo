@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=9 format=2]
+[gd_resource type="TileSet" load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Sprites/Overworld.png" type="Texture" id=1]
 
@@ -12,33 +12,61 @@ radius = 16.0
 custom_solver_bias = 0.0
 extents = Vector2( 32.5936, 16.5082 )
 
-[sub_resource type="SegmentShape2D" id=7]
+[sub_resource type="SegmentShape2D" id=4]
 
 custom_solver_bias = 0.0
 a = Vector2( 0, 0 )
 b = Vector2( 0, 16 )
 
-[sub_resource type="SegmentShape2D" id=9]
+[sub_resource type="SegmentShape2D" id=5]
 
 custom_solver_bias = 0.0
 a = Vector2( 16, 0 )
 b = Vector2( 16, 16 )
 
-[sub_resource type="SegmentShape2D" id=8]
+[sub_resource type="SegmentShape2D" id=6]
 
 custom_solver_bias = 0.0
 a = Vector2( 0, 16 )
 b = Vector2( 16, 16 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=13]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 2 )
+
+[sub_resource type="SegmentShape2D" id=9]
+
+custom_solver_bias = 0.0
+a = Vector2( 0, 0 )
+b = Vector2( 0, 16 )
+
+[sub_resource type="SegmentShape2D" id=10]
+
+custom_solver_bias = 0.0
+a = Vector2( 0, 0 )
+b = Vector2( 16, 0 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[sub_resource type="SegmentShape2D" id=11]
+
+custom_solver_bias = 0.0
+a = Vector2( 16, 0 )
+b = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=12]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
 
 [resource]
 
@@ -180,7 +208,7 @@ extents = Vector2( 8, 2 )
 13/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 7 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 14/name = "Cliff 2"
@@ -203,7 +231,7 @@ extents = Vector2( 8, 2 )
 15/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 9 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 16/name = "Cliff 4"
@@ -217,7 +245,7 @@ extents = Vector2( 8, 2 )
 16/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 7 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 17/name = "Cliff 5"
@@ -240,7 +268,7 @@ extents = Vector2( 8, 2 )
 18/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 9 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 19/name = "Cliff 7"
@@ -254,12 +282,12 @@ extents = Vector2( 8, 2 )
 19/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 7 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 8 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 20/name = "Cliff 8"
@@ -273,7 +301,7 @@ extents = Vector2( 8, 2 )
 20/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 8 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 21/name = "Cliff 9"
@@ -287,12 +315,12 @@ extents = Vector2( 8, 2 )
 21/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 8 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 9 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 22/name = "Cliff 10"
@@ -306,7 +334,7 @@ extents = Vector2( 8, 2 )
 22/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 5 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 23/name = "Cliff 11"
@@ -320,7 +348,7 @@ extents = Vector2( 8, 2 )
 23/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 5 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 24/name = "Cliff 12"
@@ -334,7 +362,7 @@ extents = Vector2( 8, 2 )
 24/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 5 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 25/name = "Cliff 13"
@@ -348,7 +376,7 @@ extents = Vector2( 8, 2 )
 25/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 5 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 26/name = "Cliff 14"
@@ -362,7 +390,7 @@ extents = Vector2( 8, 2 )
 26/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 5 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 27/name = "Cliff 15"
@@ -376,7 +404,7 @@ extents = Vector2( 8, 2 )
 27/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 5 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 28/name = "Cliff 16"
@@ -390,7 +418,7 @@ extents = Vector2( 8, 2 )
 28/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 6 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 2 )
 } ]
 29/name = "Cliff 17"
@@ -404,7 +432,7 @@ extents = Vector2( 8, 2 )
 29/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 6 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 2 )
 } ]
 30/name = "Cliff 18"
@@ -418,7 +446,7 @@ extents = Vector2( 8, 2 )
 30/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 6 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 2 )
 } ]
 31/name = "Cliff 19"
@@ -461,20 +489,35 @@ extents = Vector2( 8, 2 )
 35/texture = ExtResource( 1 )
 35/tex_offset = Vector2( 0, 0 )
 35/modulate = Color( 1, 1, 1, 1 )
-35/region = Rect2( 112, 176, 16, 32 )
+35/region = Rect2( 0, 176, 16, 16 )
 35/is_autotile = false
 35/occluder_offset = Vector2( 0, 0 )
 35/navigation_offset = Vector2( 0, 0 )
-35/shapes = [  ]
+35/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 36/name = "Cliff 24"
 36/texture = ExtResource( 1 )
 36/tex_offset = Vector2( 0, 0 )
 36/modulate = Color( 1, 1, 1, 1 )
-36/region = Rect2( 128, 176, 16, 16 )
+36/region = Rect2( 16, 176, 16, 16 )
 36/is_autotile = false
 36/occluder_offset = Vector2( 0, 0 )
 36/navigation_offset = Vector2( 0, 0 )
-36/shapes = [  ]
+36/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 37/name = "Cave"
 37/texture = ExtResource( 1 )
 37/tex_offset = Vector2( 0, 0 )
@@ -483,7 +526,12 @@ extents = Vector2( 8, 2 )
 37/is_autotile = false
 37/occluder_offset = Vector2( 0, 0 )
 37/navigation_offset = Vector2( 0, 0 )
-37/shapes = [  ]
+37/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
 38/name = "Blocked Cave"
 38/texture = ExtResource( 1 )
 38/tex_offset = Vector2( 0, 0 )
@@ -556,4 +604,101 @@ extents = Vector2( 8, 2 )
 45/occluder_offset = Vector2( 0, 0 )
 45/navigation_offset = Vector2( 0, 0 )
 45/shapes = [  ]
+46/name = "Cliff Grass 1"
+46/texture = ExtResource( 1 )
+46/tex_offset = Vector2( 0, 0 )
+46/modulate = Color( 1, 1, 1, 1 )
+46/region = Rect2( 176, 80, 16, 16 )
+46/is_autotile = false
+46/occluder_offset = Vector2( 0, 0 )
+46/navigation_offset = Vector2( 0, 0 )
+46/shapes = [  ]
+47/name = "Cliff Grass 3"
+47/texture = ExtResource( 1 )
+47/tex_offset = Vector2( 0, 0 )
+47/modulate = Color( 1, 1, 1, 1 )
+47/region = Rect2( 176, 96, 16, 16 )
+47/is_autotile = false
+47/occluder_offset = Vector2( 0, 0 )
+47/navigation_offset = Vector2( 0, 0 )
+47/shapes = [  ]
+48/name = "Cliff Grass 2"
+48/texture = ExtResource( 1 )
+48/tex_offset = Vector2( 0, 0 )
+48/modulate = Color( 1, 1, 1, 1 )
+48/region = Rect2( 192, 80, 16, 16 )
+48/is_autotile = false
+48/occluder_offset = Vector2( 0, 0 )
+48/navigation_offset = Vector2( 0, 0 )
+48/shapes = [  ]
+49/name = "Cliff Grass 4"
+49/texture = ExtResource( 1 )
+49/tex_offset = Vector2( 0, 0 )
+49/modulate = Color( 1, 1, 1, 1 )
+49/region = Rect2( 192, 96, 16, 16 )
+49/is_autotile = false
+49/occluder_offset = Vector2( 0, 0 )
+49/navigation_offset = Vector2( 0, 0 )
+49/shapes = [  ]
+50/name = "Cliff 25"
+50/texture = ExtResource( 1 )
+50/tex_offset = Vector2( 0, 0 )
+50/modulate = Color( 1, 1, 1, 1 )
+50/region = Rect2( 32, 176, 16, 16 )
+50/is_autotile = false
+50/occluder_offset = Vector2( 0, 0 )
+50/navigation_offset = Vector2( 0, 0 )
+50/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 11 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+51/name = "Log 1"
+51/texture = ExtResource( 1 )
+51/tex_offset = Vector2( 0, 0 )
+51/modulate = Color( 1, 1, 1, 1 )
+51/region = Rect2( 48, 80, 16, 16 )
+51/is_autotile = false
+51/occluder_offset = Vector2( 0, 0 )
+51/navigation_offset = Vector2( 0, 0 )
+51/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
+52/name = "Log 2"
+52/texture = ExtResource( 1 )
+52/tex_offset = Vector2( 0, 0 )
+52/modulate = Color( 1, 1, 1, 1 )
+52/region = Rect2( 64, 80, 16, 16 )
+52/is_autotile = false
+52/occluder_offset = Vector2( 0, 0 )
+52/navigation_offset = Vector2( 0, 0 )
+52/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
+53/name = "Log 3"
+53/texture = ExtResource( 1 )
+53/tex_offset = Vector2( 0, 0 )
+53/modulate = Color( 1, 1, 1, 1 )
+53/region = Rect2( 80, 80, 16, 16 )
+53/is_autotile = false
+53/occluder_offset = Vector2( 0, 0 )
+53/navigation_offset = Vector2( 0, 0 )
+53/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
 

@@ -66,7 +66,7 @@ __meta__ = {
 
 [node name="Player" parent="." index="3" instance=ExtResource( 3 )]
 
-position = Vector2( 280, 520.917 )
+position = Vector2( 280, 521 )
 facing = 1
 
 [node name="Border" type="TileMap" parent="." index="4"]
@@ -97,6 +97,7 @@ __meta__ = {
 
 position = Vector2( 280.046, 544.87 )
 next_scene = "res://Scenes/Main.tscn"
+spawn_location = Vector2( -8, 56 )
 
 [node name="NPC" parent="." index="6" instance=ExtResource( 5 )]
 

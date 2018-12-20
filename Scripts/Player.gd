@@ -23,6 +23,9 @@ var velocity = Vector2()
 
 func _ready():
 	
+	if not Global.player_location == null:
+		position = Global.player_location
+	
 	sprite = $AnimatedSprite
 	damage_timer = $DamageTimer
 	
